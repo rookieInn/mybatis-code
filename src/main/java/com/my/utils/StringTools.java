@@ -15,10 +15,9 @@ public class StringTools {
      * @return 类名
      */
     public static String tableToClass(String table) {
-        return Arrays.asList(table.split("_"))
-                .stream()
-                .map(e -> e.substring(0, 1).toUpperCase() + e.substring(1, e.length()))
-                .reduce("", String::concat);
+        return Arrays.stream(table.split("_"))
+                     .map(e -> e.substring(0, 1).toUpperCase() + e.substring(1, e.length()))
+                     .reduce("", String::concat);
     }
 
     /**
