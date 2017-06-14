@@ -34,6 +34,18 @@ public class WriteFactoryBean {
                       .collect(Collectors.joining(","));
     }
 
+/**
+     * 获取数据库的列字符串 用,隔开
+     *
+     * @param columns 列
+     * @return 字符串隔开的列
+     */
+    private String getPropertyList(List<Column> columns) {
+        return columns.stream()
+                      .map(Column::getPropertyName)
+                      .collect(Collectors.joining(","));
+    }
+
     /**
      * 根据id删除sql
      *
@@ -98,7 +110,7 @@ public class WriteFactoryBean {
      * @return insert sql语句
      */
     private String getInsertSql(String tableName, List<Column> columns) {
-        return String.format("insert into %s (%s) values (#{%s})", tableName, getColumnList(columns), getColumnList(columns).replaceAll(",", "},#{"))
+        return String.format("insert into %s (%s) values (#{%s})", tableName, getColumnList(columns), getPropertyList(columns).replaceAll(",", "},#{"))
                      .replace("#{createTime}", "now()")
                      .replace("#{updateTime}", "now()");
     }
