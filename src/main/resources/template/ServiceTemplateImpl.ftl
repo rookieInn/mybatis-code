@@ -8,12 +8,12 @@ import ${basePackage}.mapper.${className}Mapper;
 public class ${className}ServiceImpl implements ${className}Service{
 
 	@Resource
-    private ${className}Mapper<${className}> ${className}Mapper;
+    private ${className}Mapper<${className}> ${lowerName}Mapper;
 
 	@Override
 	public boolean insert(${className} ${lowerName})  throws Exception{
 		try {
-			${className}Mapper.insert(${lowerName});
+			${lowerName}Mapper.insert(${lowerName});
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -24,7 +24,7 @@ public class ${className}ServiceImpl implements ${className}Service{
 	@Override
 	public boolean update(${className} ${lowerName}) throws Exception{
 		try {
-			${className}Mapper.update(${lowerName});
+			${lowerName}Mapper.update(${lowerName});
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -35,7 +35,7 @@ public class ${className}ServiceImpl implements ${className}Service{
 	@Override
 	public void updateBySelective(${className} ${lowerName}){
 		try {
-			${className}Mapper.updateBySelective(${lowerName});
+			${lowerName}Mapper.updateBySelective(${lowerName});
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -46,7 +46,7 @@ public class ${className}ServiceImpl implements ${className}Service{
 	@Override
 	public void deleteById(Object id) {
 		try {
-			${className}Mapper.updateBySelective(id);
+			${lowerName}Mapper.updateBySelective(id);
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -55,7 +55,7 @@ public class ${className}ServiceImpl implements ${className}Service{
 	}
 
 	@Override
-	public ${className} getById(Object id) throws Exception{
+	public ${lowerName} getById(Object id) throws Exception{
 		return getDao().queryById(id);
 	}
 
