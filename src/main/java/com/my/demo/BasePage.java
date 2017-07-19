@@ -1,34 +1,18 @@
 package com.my.demo;
 
 import java.io.Serializable;
-import java.util.Date;
-
 
 public class BasePage implements Serializable,Cloneable{
 	
 	private static final long serialVersionUID = 1L;
 
-	private Integer page = 1;
-	
-	private Integer rows =10;
+	private Integer page = 1; //当前页
+	private Integer rows =10; //每页行数
+	private int pageOffset = 0;// 当前页起始记录
 
-	private Date startDate;
-	
-	private Date endDate;
-
-	/**
-	 * 分页导航
-	 */
-	private Pager pager = new Pager();
-
-	public Pager getPager() {
-		pager.setPageId(getPage());
-		pager.setPageSize(getRows());
-		return pager;
-	}
-
-	public void setPager(Pager pager) {
-		this.pager = pager;
+	public String getMysqlQueryCondition() {
+		this.pageOffset = (this.page - 1) * this.rows;
+		return " limit " + pageOffset + "," + rows;
 	}
 
 	public Integer getPage() {
@@ -47,20 +31,11 @@ public class BasePage implements Serializable,Cloneable{
 		this.rows = rows;
 	}
 
-	public Date getStartDate() {
-		return startDate;
+	public int getPageOffset() {
+		return pageOffset;
 	}
 
-	public void setStartDate(Date startDate) {
-		this.startDate = startDate;
+	public void setPageOffset(int pageOffset) {
+		this.pageOffset = pageOffset;
 	}
-
-	public Date getEndDate() {
-		return endDate;
-	}
-
-	public void setEndDate(Date endDate) {
-		this.endDate = endDate;
-	}
-
 }
