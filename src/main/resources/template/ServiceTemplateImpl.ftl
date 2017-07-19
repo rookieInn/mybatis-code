@@ -4,14 +4,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ${basePackage}.mapper.${className}Mapper;
 
+import java.util.List;
+
 @Service
 public class ${className}ServiceImpl implements ${className}Service{
 
-	@Resource
+	@Autowired
     private ${className}Mapper<${className}> ${lowerName}Mapper;
 
 	@Override
-	public boolean insert(${className} ${lowerName})  throws Exception{
+	public boolean insert(${className} ${lowerName}) {
 		try {
 			${lowerName}Mapper.insert(${lowerName});
 			return true;
@@ -22,7 +24,7 @@ public class ${className}ServiceImpl implements ${className}Service{
 	}
 
 	@Override
-	public boolean update(${className} ${lowerName}) throws Exception{
+	public boolean update(${className} ${lowerName}) {
 		try {
 			${lowerName}Mapper.update(${lowerName});
 			return true;
@@ -33,7 +35,7 @@ public class ${className}ServiceImpl implements ${className}Service{
 	}
 
 	@Override
-	public void updateBySelective(${className} ${lowerName}){
+	public void updateBySelective(${className} ${lowerName}) {
 		try {
 			${lowerName}Mapper.updateBySelective(${lowerName});
 			return true;
@@ -46,7 +48,7 @@ public class ${className}ServiceImpl implements ${className}Service{
 	@Override
 	public void deleteById(Object id) {
 		try {
-			${lowerName}Mapper.updateBySelective(id);
+			${lowerName}Mapper.deleteById(id);
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -55,8 +57,8 @@ public class ${className}ServiceImpl implements ${className}Service{
 	}
 
 	@Override
-	public ${lowerName} getById(Object id) throws Exception{
-		return getDao().queryById(id);
+	public ${className} getById(Object id){
+		return ${lowerName}Mapper.getById(id);
 	}
 
 	@Override
