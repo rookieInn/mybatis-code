@@ -35,7 +35,7 @@ public class ${className}ServiceImpl implements ${className}Service{
 	}
 
 	@Override
-	public void updateBySelective(${className} ${lowerName}) {
+	public boolean updateBySelective(${className} ${lowerName}) {
 		try {
 			${lowerName}Mapper.updateBySelective(${lowerName});
 			return true;
@@ -46,7 +46,7 @@ public class ${className}ServiceImpl implements ${className}Service{
 	}
 
 	@Override
-	public void deleteById(Object id) {
+	public boolean deleteById(Object id) {
 		try {
 			${lowerName}Mapper.deleteById(id);
 			return true;
