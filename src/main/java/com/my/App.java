@@ -17,12 +17,11 @@ import java.util.List;
 public class App {
 
     public static void main(String[] args) throws Exception {
-
-        codeGenerate("major");
+        codeGenerate("app");
 
     }
 
-    public static void codeGenerate(String tableName) throws Exception {
+    private static void codeGenerate(String tableName) throws Exception {
         ColumnService columnService = new ColumnService();
         List<Column> columns = columnService.getColumnList(tableName); //所有的列
 
@@ -37,6 +36,8 @@ public class App {
         context.put("tableName", tableName);
         context.put("basePackage", Configuration.basePackage);
         context.put("keyType", keyType);
+        context.put("keyProperties", columns.get(0).getColumnName());
+
         context.put("feilds", factoryBean.getFields(columns));
         context.put("SQL", factoryBean.getAutoCreateSql(tableName, columns));
         context.put("columnDatas", columns);

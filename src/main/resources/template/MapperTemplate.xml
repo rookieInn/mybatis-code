@@ -27,7 +27,7 @@
 
 	<insert id="insert" parameterType="Object" >
 		#if  ($keyType =='02')
-		<selectKey resultType="java.lang.Integer" order="AFTER" keyProperty="id">
+		<selectKey resultType="java.lang.Integer" order="AFTER" keyProperty="${keyProperties}">
 			SELECT LAST_INSERT_ID()
 		</selectKey>
 		#end
